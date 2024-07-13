@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
-import pandas as pd
 from convert import convert_csv_to_json
+import pandas as pd
+import io
 
 app = Flask(__name__)
 
@@ -23,7 +24,7 @@ def convert_data():
         return jsonify({'error': 'No data provided'}), 400
 
     try:
-        df = pd.read_csv(pd.compat.StringIO(data))
+        df = pd.read_csv(io.StringIO(data))
         return convert_csv_to_json(df)
     except Exception as e:
         return jsonify({'error': str(e)}), 400
