@@ -41,6 +41,9 @@ def convert_data():
     if not data:
         return jsonify({'error': 'No data provided'}), 400
 
+    if len(data) > app.config['MAX_CONTENT_LENGTH']:
+        return jsonify({'error': 'Data size exceeds limit'}), 400
+    
     try:
         df = pd.read_csv(io.StringIO(data))
         return convert_csv_to_json(df)
