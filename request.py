@@ -19,7 +19,7 @@ def test_data_post():
         print(f"Request error: {str(e)}")
 
 def test_file_post():
-    url = 'http://localhost:5000/convert'
+    url = 'http://localhost:5000/convert_file'
     files = {'file': open('pepper.csv', 'rb')}
 
     response = requests.post(url, files=files)
@@ -27,7 +27,7 @@ def test_file_post():
     print(response.json())
 
 if __name__ == "__main__":
-    if sys.argv[1] == 1:
+    if sys.argv[1] == '1':
         test_file_post()
     else:
         test_data_post()
