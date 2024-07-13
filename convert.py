@@ -16,7 +16,7 @@ def build_json_list(df):
 def build_json_obj(df):
     json_fields = df.columns.tolist()
     obj_map = {}
-    
+
     for field in json_fields:
         value = df.iloc[0][field]
         if isinstance(value, pd.Series):
@@ -30,6 +30,6 @@ def build_json_obj(df):
 
 def convert_csv_to_json(df):
     if len(df) != 1:
-        build_json_list(df)
+        return build_json_list(df)
     else:
-        build_json_obj(df)
+        return build_json_obj(df)
