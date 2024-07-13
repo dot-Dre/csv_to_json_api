@@ -16,7 +16,7 @@ def convert_file():
     except Exception as e:
         return jsonify({'error': f'Failed to read CSV: {str(e)}'}), 400
     
-@app.route('/convert_data', method=['POST'])
+@app.route('/convert_data', methods=['POST'])
 def convert_data():
     data = request.data.decode('utf-8')
     if not data:
